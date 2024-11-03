@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: northwind_case
+    description: This is a replica of the Postgres database used by our client.
+    tables:
+      - name: categories
+      - name: customer_customer_demo
+      - name: customer_demographics
+      - name: customers
+      - name: employee_territories
+      - name: employees
+      - name: order_details
+      - name: orders
+        description: >
+          One record per order. Includes cancelled and deleted orders.
+        columns:
+          - name: order_id
+            description: Primary key of the orders table
+            tests:
+              - unique
+              - not_null
+      - name: products
+      - name: region
+      - name: shippers
+      - name: suppliers
+      - name: territories
+      - name: us_states
