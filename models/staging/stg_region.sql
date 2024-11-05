@@ -10,4 +10,3 @@ with
         from {{ source('northwind_case', 'region') }}
     )
 select * from source
-

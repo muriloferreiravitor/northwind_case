@@ -5,27 +5,22 @@ with
             -- /* Primary Key */
             employee_id
 
-            , first_name ||" "|| last_name as full_name
-            , last_name
-            , first_name
+            , reports_to
+            , first_name ||" "|| last_name as name
+            , birth_date
+            , country
+            , region
+            , city
+            , address
+            , postal_code
+            , home_phone
+            , hire_date
             , title
             , title_of_courtesy
-            , birth_date
-            , hire_date
-            , address
-            , city
-            , region
-            , postal_code
-            , country
-            , home_phone
-            , extension
-            , photo
             , notes
-            , reports_to
+            , extension
             , photo_path
             
         from {{ source('northwind_case', 'employees') }}
     )
 select * from source
-
-
