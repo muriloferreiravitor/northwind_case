@@ -95,7 +95,7 @@ with
             /* Orders metrics */
             , sum(order_details_total_price) as order_total_price
             , sum(order_details_total_discount) as order_total_discount
-            , sum(order_details_final_price) as order_final_price
+            , sum(order_details_final_price) as order_total_price_minus_discount
             , (sum(order_details_final_price) - any_value(freight)) as order_final_price_minus_freight
 
         from fact_orders_details
