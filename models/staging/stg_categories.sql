@@ -5,8 +5,8 @@ with
             -- /* Primary Key */
             category_id
 
-            , category_name
-            , description
+            , category_name as product_category_name
+            , description as product_description
             , picture
 
         from {{ source('northwind_case', 'categories') }}

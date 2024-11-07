@@ -20,8 +20,8 @@ with
             , stg_products.reorder_level
             , stg_products.is_discontinued
 
-            , stg_categories.category_name
-            , stg_categories.description
+            , stg_categories.product_category_name
+            , stg_categories.product_description
 
             , stg_suppliers.company_name
             , stg_suppliers.contact_name

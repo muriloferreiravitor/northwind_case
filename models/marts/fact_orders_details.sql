@@ -14,6 +14,9 @@ with
     , stg_orders as (
         select
             stg_orders.*
+            , dim_customers.company_name as customer_name
+            , dim_customers.country as customer_country
+            , dim_shippers.company_name as shipper_name
         from {{ref('stg_orders')}}
         left join dim_customers
             on stg_orders.customer_id = dim_customers.customer_id
@@ -25,6 +28,9 @@ with
     , stg_order_details as (
         select
             stg_order_details.*
+            , dim_products.product_name
+            , dim_products.product_category_name
+            , dim_products.product_description            
         from {{ref('stg_order_details')}}
         left join dim_products
             on stg_order_details.product_id = dim_products.product_id
@@ -32,14 +38,20 @@ with
     , fact_orders_details as (
         select
 
-            -- /* Primary Key */
             stg_orders.order_id
 
-            -- /* Foreign Key */
-            , stg_order_details.product_id
-            , stg_orders.customer_id
             , stg_orders.employee_id
             , stg_orders.shipper_id
+            , stg_orders.shipper_name
+
+            , stg_orders.customer_id
+            , stg_orders.customer_name
+            , stg_orders.customer_country
+
+            , stg_order_details.product_id
+            , stg_order_details.product_name
+            , stg_order_details.product_category_name
+            , stg_order_details.product_description
 
             -- /* Order info */
             , stg_orders.order_date
